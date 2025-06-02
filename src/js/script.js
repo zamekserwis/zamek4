@@ -35,52 +35,53 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', toggleMenu);
     });
 });
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof WOW === 'function') {
-        new WOW().init();
-    }
-
-    let sectionOffsets = {
-        '#section0': 0,
-        '#section1': -90,
-        '#section2': 100,
-        '#section1-m': 100,
-    };
-
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            let target = document.querySelector(this.getAttribute('href'));
-            let destination = target.offsetTop;
-            let offsetTop = sectionOffsets[this.getAttribute('href')] || 20;
-
-
-            let start = window.pageYOffset;
-            let distance = destination - offsetTop - start;
-            let duration = 1000;
-            let startTime = null;
-
-            function smoothScroll(currentTime) {
-                if (startTime === null) startTime = currentTime;
-                let timeElapsed = currentTime - startTime;
-                let run = ease(timeElapsed, start, distance, duration);
-                window.scrollTo(0, run);
-                if (timeElapsed < duration) requestAnimationFrame(smoothScroll);
-            }
-
-            function ease(t, b, c, d) {
-                t /= d / 2;
-                if (t < 1) return c / 2 * t * t + b;
-                t--;
-                return -c / 2 * (t * (t - 2) - 1) + b;
-            }
-
-            requestAnimationFrame(smoothScroll);
-        });
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof WOW === "function") {
+    new WOW().init();
+  }
 });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     if (typeof WOW === 'function') {
+//         new WOW().init();
+//     }
+
+//     let sectionOffsets = {
+//         '#section0': 0,
+//         '#section1': -90,
+//         '#section2': 100,
+//         '#section1-m': 100,
+//     };
+
+//     document.addEventListener("DOMContentLoaded", function () {
+//       if (typeof WOW === "function") {
+//         new WOW().init();
+//       }
+//       // ...другой код...
+//     });
+
+//     // В КОНЕЦ ФАЙЛА добавьте:
+//     document.addEventListener("DOMContentLoaded", function () {
+//       document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+//         anchor.addEventListener("click", function (e) {
+//           const href = this.getAttribute("href");
+//           if (href.length > 1 && document.querySelector(href)) {
+//             e.preventDefault();
+//             const target = document.querySelector(href);
+//             const style = window.getComputedStyle(target);
+//             const scrollMarginTop = parseInt(style.scrollMarginTop) || 0;
+//             const rect = target.getBoundingClientRect();
+//             const scrollTop =
+//               window.pageYOffset || document.documentElement.scrollTop;
+//             window.scrollTo({
+//               top: rect.top + scrollTop - scrollMarginTop,
+//               behavior: "smooth",
+//             });
+//           }
+//         });
+//       });
+//     });
+// });
 
 document.addEventListener('DOMContentLoaded', function() {
     const swiperParams = {
@@ -149,7 +150,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function onScroll() {
-    const block = document.querySelector(".wide-photo-block-grid");
+    // const block = document.querySelector(".wide-photo-block-grid");
+    const block = document.querySelector(".stats-container");
     if (block && isInViewport(block)) {
       animateCounters();
       window.removeEventListener("scroll", onScroll);
@@ -280,4 +282,61 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .addTo(map)
       .bindPopup("Gdańsk Jasień – Obszar do 1.5 km<br>Dojeżdżamy w 5 minut!");
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+      if (href.length > 1 && document.querySelector(href)) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        const style = window.getComputedStyle(target);
+        const scrollMarginTop = parseInt(style.scrollMarginTop) || 0;
+        const rect = target.getBoundingClientRect();
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        window.scrollTo({
+          top: rect.top + scrollTop - scrollMarginTop,
+          behavior: "smooth",
+        });
+      }
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+      if (href.length > 1 && document.querySelector(href)) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target.id === "section2-2" || target.id === "section2-3") {
+          // Центрируем блок по экрану
+          const rect = target.getBoundingClientRect();
+          const scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+          const blockCenter = rect.top + scrollTop + rect.height / 2;
+          const windowCenter = window.innerHeight / 2;
+          window.scrollTo({
+            top: blockCenter - windowCenter,
+            behavior: "smooth",
+          });
+        } else {
+          // Обычный плавный скролл с учетом scroll-margin-top
+          const style = window.getComputedStyle(target);
+          const scrollMarginTop = parseInt(style.scrollMarginTop) || 0;
+          const rect = target.getBoundingClientRect();
+          const scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+          window.scrollTo({
+            top: rect.top + scrollTop - scrollMarginTop,
+            behavior: "smooth",
+          });
+        }
+      }
+    });
+  });
 });

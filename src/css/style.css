@@ -539,6 +539,12 @@ a {
   border-bottom: 4px solid #d2090a;
   margin-bottom: 40px;
   display: flex;
+  transition: all .3s ease-in-out;
+}
+.car-section-card:hover{
+  -webkit-box-shadow: 0px 0px 16px -5px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 0px 16px -5px rgba(66, 68, 90, 1);
+  box-shadow: 0px 0px 16px -5px rgba(66, 68, 90, 1);
 }
 
 .car-section-card img {
@@ -619,6 +625,7 @@ a {
   width: 140px;
   height: 21px;
   overflow: hidden;
+  transition: 0.5s;
 }
 
 .dealers-wrap img:nth-child(2) {
@@ -637,7 +644,6 @@ a {
 }
 .dealers-wrap img:hover {
   transform: scale(1.1);
-  transition: 0.5s;
 }
 
 .lock-open-content-wrap p {
@@ -686,6 +692,12 @@ a {
   border: 2px solid #042781;
   margin-bottom: 40px;
   display: flex;
+  transition: all .3s ease-in-out; 
+}
+.sub-service-card:hover{
+  -webkit-box-shadow: 0px 8px 16px -5px rgba(66, 68, 90, 1);
+-moz-box-shadow: 0px 8px 16px -5px rgba(66, 68, 90, 1);
+box-shadow: 0px 8px 16px -5px rgba(66, 68, 90, 1);
 }
 
 .sub-service-card-content {
@@ -1248,7 +1260,7 @@ a {
   }
   .card {
     padding: 12px 10px;
-    width: 175px;
+    width: 168px;
   }
   .card img {
     height: 30px;
@@ -1596,8 +1608,9 @@ a {
   }
 
   .menu-mobile__block {
+    display: flex;
     position: relative;
-    width: 60%;
+    width: 80%;
     min-height: 100vh;
     background-color: #ffffff;
     flex-direction: column;
@@ -1625,17 +1638,27 @@ a {
     margin-left: 30px;
     font-size: 22px;
     padding: 12px 24px;
+    margin-top: auto;
   }
 
   .menu-mobile__list {
     list-style-type: none;
     padding-left: 30px;
-    padding: 40px 0 0 30px;
+    padding: 30px 30px 0 30px;
     margin: 0;
   }
 
   .menu-mobile__link {
-    margin-bottom: 32px;
+    margin-bottom: 25px;
+  }
+  .menu-mobile__link:nth-child(4){
+    margin-bottom: 15px;
+  }
+  .line_burgerMenu{
+    width: 100%;
+    height: 1px;
+    background-color: #042781;
+    margin-bottom: 15px;
   }
 
   .menu-mobile__link a {
@@ -1646,7 +1669,11 @@ a {
     letter-spacing: 1.4px;
     color: #0b0c0d;
     text-decoration: none;
-    font-size: 32px;
+    font-size: 24px;
+    transition: all .3s ease-in-out;
+  }
+  .menu-mobile__link a:hover{
+    color: #042781;
   }
   .menu-mobile__link a:active {
     color: #042781;
@@ -2047,7 +2074,7 @@ a {
   }
 
   .menu-mobile__list {
-    padding: 36px 0 0 15px;
+    padding: 30px 30px 0px 30px;
   }
 
   .menu-mobile__link {
@@ -2055,7 +2082,7 @@ a {
   }
 
   .menu-mobile__link a {
-    font-size: 28px;
+    font-size: 21px;
   }
 
   .phone-menu {
@@ -2438,16 +2465,12 @@ a {
 
   .menu-mobile__button {
     width: 218px;
-    margin-left: 10px;
   }
 
   .menu-mobile__list {
-    padding: 36px 0 0 10px;
+    padding: 20px 20px 0px 20px;
   }
 
-  .menu-mobile__link {
-    margin-bottom: 36px;
-  }
 
   .phone-menu {
     padding: 4px 0;
@@ -2929,7 +2952,7 @@ a {
 .cards-container-samochody h2 {
   margin-top: clamp(40px, 8vw, 75px);
 }
-.wide-photo-block {
+/* .wide-photo-block {
   position: relative;
   right: 50%;
   width: 100%;
@@ -2953,8 +2976,77 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+} */
+.stats-bg {
+  width: 100%;
+  background: #1f2937;
+  padding: 0;
+  margin: 0;
+  margin-top: clamp(30px, 5vw, 60px);
 }
-.wide-photo-block img {
+.stats-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;      /* Центрирование по горизонтали */
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background: none;
+}
+
+
+.stat-box {
+  text-align: center;
+  border-right: 2px solid #64748b; /* slate color */
+}
+
+.stat-box:last-child {
+  border-right: none;
+}
+
+.stat-number {
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+  font-weight: bold;
+  color: white;
+}
+
+.stat-label {
+  font-size: clamp(0.65rem, 2vw, 0.875rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+}
+
+@media(max-width: 767px){
+  .stat-box:nth-child(2){
+    border-right: 0px;
+  }
+  .stats-container{
+    row-gap: 5vw;
+  }
+  .stats-container{
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem 1rem; 
+  }
+}
+@media (min-width: 1024px) {
+  .stat-number {
+    font-size: 3rem;
+  }
+
+  .stat-label {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .stats-container {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 4rem 6rem;
+  }
+}
+
+/* .wide-photo-block img {
   width: 100%;
   height: 300px;
   object-fit: cover;
@@ -3014,7 +3106,7 @@ a {
   font-size: clamp(16px, 2.5vw, 20px);
   font-weight: 600;
   color: white;
-}
+} */
 .faq {
   border-radius: 18px;
   box-shadow: 0 4px 24px 0 rgba(4, 39, 129, 0.07);
@@ -3123,15 +3215,14 @@ a {
   padding: 0 4vw;
 }
 .cards_margin_samochody {
-  margin-top: 10px;
+  margin-top: 40px;
 }
 .cards_margin_samochody_mobile {
   margin-top: 30px;
   width: 100%;
   padding: 0 1.5vw;
 }
-.card_shadow {
-}
+
 
 @media (max-width: 768px) {
   .hero-samochody-img {
@@ -3187,6 +3278,7 @@ a {
   }
   .hero-samochody h1 {
     font-size: 23px;
+    text-align: center;
   }
   .hero-samochody-img {
     max-width: 80%;
@@ -3260,11 +3352,25 @@ a {
   }
   .wide-photo-block-line{
     margin: 0 auto 20px auto;
-
   }
 }
-/* @media(max-width: 1000px){
-  .hero-samochody-img{
-    height: auto;
-  }
-} */
+@media(max-width: 525px) {
+  .menu-mobile__link a {
+    font-size: 21px;
+}
+}
+#section2-1 {
+  scroll-margin-top: 100px;
+}
+.menu-mobile {
+  z-index: 9999 !important;
+  position: fixed;
+}
+#map {
+  z-index: 1 !important;
+  position: relative;
+}
+.menu-mobile {
+  z-index: 9999 !important;
+  position: fixed;
+}
